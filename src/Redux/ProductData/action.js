@@ -81,3 +81,31 @@ export const getCartData = (payload) => (dispatch) => {
     .then((res) => dispatch(GetCartProductSuccess(res.data)))
     .catch((err) => dispatch(GetCartProductFailure(err)));
 };
+// ----------------------------------------------------------------------------
+export const removeProductCartRequest = () => {
+  return {
+    type: types.REMOVE_PRODUCT_CART_REQUEST,
+  };
+};
+export const removeProductCartSuccess = (payload) => {
+  return {
+    type: types.REMOVE_PRODUCT_CART_SUCCESS,
+    payload,
+  };
+};
+export const removeProductCartFailure = () => {
+  return {
+    type: types.REMOVE_PRODUCT_CART_FAILURE,
+  };
+};
+
+export const removeProductCart = (id) => (dispatch) => {
+  dispatch(removeProductCartRequest());
+  axios
+    .delete(`http://localhost:8080/cart/${id}`)
+    .then((res) => {
+      dispatch(removeProductCartSuccess(res.data));
+    })
+    .then((res) => dispatch(GetCartProductSuccess(res.data)))
+    .catch((err) => dispatch(removeProductCartFailure(err)));
+};

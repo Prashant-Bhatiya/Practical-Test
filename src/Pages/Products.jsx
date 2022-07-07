@@ -34,11 +34,17 @@ const Products = () => {
   return (
     <Box>
       <Box>
-        <Heading as="h3" className="App" marginTop={"10px"}>Products</Heading>
+        <Heading as="h3" className="App" marginTop={"10px"}>
+          Products
+        </Heading>
         {products.isLoading ? (
           <Heading className={"App"}>.......Loading</Heading>
         ) : (
-          <Flex flexWrap={"wrap"} justifyContent={"space-around"} marginTop={"10px"}>
+          <Flex
+            flexWrap={"wrap"}
+            justifyContent={"space-around"}
+            marginTop={"10px"}
+          >
             {products.data.map((product) => {
               return (
                 <ProductSimple
@@ -77,15 +83,13 @@ function ProductSimple({
     for (let i = 0; i < cartArr.length; i++) {
       if (cartArr[i].id === productobj.id) {
         alert("Selected Product is Available into a Cart");
-        navigate("/products", { replace: true });
+        navigate("/", { replace: true });
         flag = true;
       }
     }
     if (flag === false) {
       dispatch(addProductCart(productobj));
     }
-    // console.log(productobj);
-    // console.log(cartArr);
   };
   return (
     <Center py={12}>

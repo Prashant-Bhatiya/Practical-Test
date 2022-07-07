@@ -10,39 +10,6 @@
       "price": 29.45,
       "rating": 4,
       "id": "p-1"
-    },
-    {
-      "title": "Brown eggs",
-      "type": "dairy",
-      "description": "Raw organic brown eggs in a basket",
-      "filename": "https://api4286.s3.ap-south-1.amazonaws.com/images/0.jpg",
-      "height": 600,
-      "width": 400,
-      "price": 28.1,
-      "rating": 4,
-      "id": "p-0"
-    },
-    {
-      "title": "Asparagus",
-      "type": "vegetable",
-      "description": "Asparagus with ham on the wooden table",
-      "filename": "https://api4286.s3.ap-south-1.amazonaws.com/images/2.jpg",
-      "height": 450,
-      "width": 299,
-      "price": 18.95,
-      "rating": 3,
-      "id": "p-2"
-    },
-    {
-      "title": "Healthy breakfast",
-      "type": "fruit",
-      "description": "Healthy breakfast set. rice cereal or porridge with berries and honey over rustic wood background",
-      "filename": "https://api4286.s3.ap-south-1.amazonaws.com/images/13.jpg",
-      "height": 450,
-      "width": 350,
-      "price": 13.02,
-      "rating": 2,
-      "id": "p-13"
     }
   ]
 }

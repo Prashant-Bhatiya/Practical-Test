@@ -48,17 +48,19 @@ const Navbar = () => {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}
-          >
-            <img
-              className="IMGLOGO"
-              src="https://i.ibb.co/JRCCrgB/Kabra.jpg"
-              alt="Kabra Logintech"
-            />
-          </Text>
+          <Link to={"/"}>
+            <Text
+              textAlign={useBreakpointValue({ base: "center", md: "left" })}
+              fontFamily={"heading"}
+              color={useColorModeValue("gray.800", "white")}
+            >
+              <img
+                className="IMGLOGO"
+                src="https://i.ibb.co/JRCCrgB/Kabra.jpg"
+                alt="Kabra Logintech"
+              />
+            </Text>
+          </Link>
         </Flex>
 
         <Stack
@@ -68,7 +70,11 @@ const Navbar = () => {
           spacing={6}
         >
           <Link to={"/cart"}>
-            <Box position={"relative"} padding={"0 0.5rem 0 0"}>
+            <Box
+              position={"relative"}
+              padding={"0 0.5rem 0 0"}
+              marginTop={"6px"}
+            >
               <CartCounter />
               <Icon as={BsCart3} boxSize={"2rem"} />
             </Box>
