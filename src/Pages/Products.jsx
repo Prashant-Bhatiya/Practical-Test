@@ -7,47 +7,86 @@ import {
   Stack,
   Image,
   Flex,
+  Button,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getData } from "../Redux/ProductData/action";
+import {
+  addProductCart,
+  getCartData,
+  getData,
+} from "../Redux/ProductData/action";
 import "./Products.css";
+import "../App.css";
+import { useNavigate } from "react-router";
 
 const Products = () => {
   const dispatch = useDispatch();
   const products = useSelector((store) => store.appReducer);
+  const cartArr = useSelector((store) => store.appReducer.cartdata);
 
   useEffect(() => {
+    dispatch(getCartData());
     dispatch(getData());
   }, [dispatch]);
 
-  console.log(products.data);
   return (
     <Box>
       <Box>
         <Heading as="h3">Products</Heading>
-        <Flex flexWrap={"wrap"} justifyContent={"space-around"}>
-          {products.data.map((product) => {
-            return (
-              <ProductSimple
-                key={product.id}
-                filename={product.filename}
-                title={product.title}
-                price={product.price}
-                rating={product.rating}
-                description={product.description}
-              />
-            );
-          })}
-        </Flex>
+        {products.isLoading ? (
+          <Heading className={"App"}>.......Loading</Heading>
+        ) : (
+          <Flex flexWrap={"wrap"} justifyContent={"space-around"}>
+            {products.data.map((product) => {
+              return (
+                <ProductSimple
+                  key={product.id}
+                  cartarr={cartArr}
+                  productobj={product}
+                  filename={product.filename}
+                  title={product.title}
+                  price={product.price}
+                  rating={product.rating}
+                  description={product.description}
+                />
+              );
+            })}
+          </Flex>
+        )}
       </Box>
     </Box>
   );
 };
 
-function ProductSimple({ filename, title, price, rating, description }) {
+function ProductSimple({
+  cartarr,
+  productobj,
+  filename,
+  title,
+  price,
+  rating,
+  description,
+}) {
   const [descriptions, setDescriptions] = useState(true);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleCart = (productobj, cartArr) => {
+    let flag = false;
+    for (let i = 0; i < cartArr.length; i++) {
+      if (cartArr[i].id === productobj.id) {
+        alert("Selected Product is Available into a Cart");
+        navigate("/products", { replace: true });
+        flag = true;
+      }
+    }
+    if (flag === false) {
+      dispatch(addProductCart(productobj));
+    }
+    // console.log(productobj);
+    // console.log(cartArr);
+  };
   return (
     <Center py={12}>
       <Box
@@ -90,6 +129,7 @@ function ProductSimple({ filename, title, price, rating, description }) {
             width={282}
             objectFit={"cover"}
             src={filename}
+            className={"productimg"}
           />
         </Box>
         <Stack pt={10} align={"center"}>
@@ -124,6 +164,15 @@ function ProductSimple({ filename, title, price, rating, description }) {
               {description}
             </Text>
           )}
+          <Button
+            colorScheme="teal"
+            variant="outline"
+            onClick={() => {
+              handleCart(productobj, cartarr);
+            }}
+          >
+            Add to Cart
+          </Button>
         </Stack>
       </Box>
     </Center>

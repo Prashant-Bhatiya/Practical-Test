@@ -1,5 +1,5 @@
 .description {
-  color: blue;
+  color: green;
   cursor: pointer;
   text-decoration: underline;
 }
@@ -8,9 +8,11 @@
   text-decoration: none;
 }
 .descriptionText {
-  color: black;
   cursor: pointer;
 }
 .descriptionText:hover {
   color: green;
+}
+.productimg:hover{
+  cursor: pointer;
 }
