@@ -4,15 +4,18 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
-  Collapse,
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Icon,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import "./Navbar.css";
+import Profile from "./Profile";
+import { BsCart3 } from "react-icons/bs";
+import CartCounter from "./CartCounter";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -63,7 +66,16 @@ const Navbar = () => {
           justify={"flex-end"}
           direction={"row"}
           spacing={6}
-        ></Stack>
+        >
+          <Link to={"/cart"}>
+            <Box position={"relative"} padding={"0 0.5rem 0 0"}>
+              <CartCounter />
+              <Icon as={BsCart3} boxSize={"2rem"} />
+            </Box>
+          </Link>
+
+          <Profile />
+        </Stack>
       </Flex>
     </Box>
   );

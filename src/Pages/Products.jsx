@@ -34,11 +34,11 @@ const Products = () => {
   return (
     <Box>
       <Box>
-        <Heading as="h3">Products</Heading>
+        <Heading as="h3" className="App" marginTop={"10px"}>Products</Heading>
         {products.isLoading ? (
           <Heading className={"App"}>.......Loading</Heading>
         ) : (
-          <Flex flexWrap={"wrap"} justifyContent={"space-around"}>
+          <Flex flexWrap={"wrap"} justifyContent={"space-around"} marginTop={"10px"}>
             {products.data.map((product) => {
               return (
                 <ProductSimple
