@@ -1,0 +1,16 @@
+.description {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.description:hover {
+  color: red;
+  text-decoration: none;
+}
+.descriptionText {
+  color: black;
+  cursor: pointer;
+}
+.descriptionText:hover {
+  color: green;
+}
